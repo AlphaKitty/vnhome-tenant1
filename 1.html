@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>租房App - 租客端原型</title>
+    <!-- FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Bootstrap CSS for layout and styling -->
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body.dark {
+        background-color: #2b2b2b;
+        color: #f0f0f0;
+      }
+      .dark .card,
+      .dark .modal-content,
+      .dark .nav,
+      .dark .navbar,
+      .dark .table {
+        background-color: #3c3c3c;
+        color: #f0f0f0;
+      }
+      .dark a,
+      .dark .nav-link {
+        color: #81c784;
+      }
+      .dark input,
+      .dark textarea,
+      .dark select {
+        background-color: #555;
+        color: #fff;
+        border-color: #777;
+      }
+      .navbar {
+        padding: 0.5rem 1rem;
+      }
+      .nav-item i {
+        font-size: 1.2rem;
+      }
+      .tab-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #f8f9fa;
+        display: flex;
+        justify-content: space-around;
+        border-top: 1px solid #ddd;
+      }
+      .tab-bar a {
+        flex: 1;
+        text-align: center;
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+        color: #555;
+        text-decoration: none;
+      }
+      .tab-bar a.active {
+        color: #000;
+        font-weight: 600;
+      }
+      .tab-bar i {
+        display: block;
+        font-size: 1.3rem;
+      }
+      .chat-bubble {
+        padding: 0.5rem 0.75rem;
+        border-radius: 1rem;
+        margin: 0.25rem 0;
+        max-width: 70%;
+      }
+      .chat-bubble.sender {
+        background: #007bff;
+        color: white;
+        margin-left: auto;
+        text-align: right;
+      }
+      .chat-bubble.receiver {
+        background: #e9e9eb;
+        color: #333;
+        margin-right: auto;
+        text-align: left;
+      }
+      .chat-input {
+        position: fixed;
+        bottom: 3rem;
+        left: 0;
+        right: 0;
+        background: #fff;
+        padding: 0.5rem;
+      }
+      .chat-input input {
+        width: 85%;
+      }
+    </style>
+  </head>
+  <body class="light">
+    <!-- Top Navbar with language and theme toggle -->
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h6">租房App</span>
+      <div class="ml-auto">
+        <span class="mr-3"><i class="fa fa-globe"></i> 中 | EN | VI</span>
+        <a
+          href="javascript:void(0)"
+          onclick="document.body.classList.toggle('dark')"
+          title="切换主题"
+        >
+          <i class="fa fa-moon"></i>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Search Screen (找房) -->
+    <div class="container mt-3 mb-5">
+      <h5>找房</h5>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="搜索城市、小区、地标..."
+        />
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+      <!-- List of houses -->
+      <div class="card mb-3">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/1/1e/AIMCO_apartment_interior.jpg"
+          class="card-img-top"
+          alt="House 1"
+        />
+        <div class="card-body">
+          <h6 class="card-title">现代公寓 · 2室1厅</h6>
+          <p class="card-text text-muted">中心城区 · ¥5000/月</p>
+          <button class="btn btn-primary btn-sm">
+            <i class="fa fa-comments"></i> 聊一聊
+          </button>
+          <button class="btn btn-secondary btn-sm">查看详情</button>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/0/07/AIMCO_apartment_interior_2.jpg"
+          class="card-img-top"
+          alt="House 2"
+        />
+        <div class="card-body">
+          <h6 class="card-title">Loft公寓 · 1室</h6>
+          <p class="card-text text-muted">近地铁 · ¥4000/月</p>
+          <button class="btn btn-primary btn-sm">
+            <i class="fa fa-comments"></i> 聊一聊
+          </button>
+          <button class="btn btn-secondary btn-sm">查看详情</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Screen (沟通) -->
+    <div class="container mt-5 mb-5">
+      <h5>与房东聊天</h5>
+      <div class="d-flex flex-column">
+        <div class="chat-bubble receiver">您好，我想了解一下房源情况。</div>
+        <div class="chat-bubble sender">您好，这套公寓本月可以入住。</div>
+        <div class="chat-bubble receiver">可以预约明天看房吗？</div>
+        <div class="chat-bubble sender">可以的，我下午有空。</div>
+      </div>
+    </div>
+    <!-- Chat input bar -->
+    <div class="chat-input">
+      <input
+        type="text"
+        class="form-control d-inline-block"
+        placeholder="输入消息..."
+      />
+      <button class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
+    </div>
+
+    <!-- Contract Signing Screen (签约) -->
+    <div class="container mt-5 mb-5">
+      <h5>签署租赁合同</h5>
+      <p>租期: 2025/01/01 - 2025/12/31</p>
+      <p>租金: ¥5000/月, 押金: ¥5000</p>
+      <button class="btn btn-success">
+        <i class="fa fa-file-signature"></i> 确认签约
+      </button>
+    </div>
+
+    <!-- Payment Screen (支付) -->
+    <div class="container mt-5 mb-5">
+      <h5>支付租金</h5>
+      <p>应支付金额: ¥10000 (首月租金+押金)</p>
+      <div class="form-group">
+        <label>银行卡号</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="**** **** **** 1234"
+        />
+      </div>
+      <div class="form-group">
+        <label>有效期</label>
+        <input type="text" class="form-control" placeholder="MM/YY" />
+      </div>
+      <div class="form-group">
+        <label>CVV</label>
+        <input type="password" class="form-control" placeholder="CVV" />
+      </div>
+      <button class="btn btn-primary btn-block">支付</button>
+    </div>
+
+    <!-- Lease Active Screen (入住) -->
+    <div class="container mt-5 mb-5">
+      <h5>租赁详情</h5>
+      <p>房源: 现代公寓 · 2室1厅</p>
+      <p>租期: 2025/01/01 - 2025/12/31 (已入住)</p>
+      <p>租客: 张三 (你)</p>
+      <button class="btn btn-warning">报告维保问题</button>
+      <button class="btn btn-danger">申请退房</button>
+    </div>
+
+    <!-- Maintenance Request Screen (维保) -->
+    <div class="container mt-5 mb-5">
+      <h5>报修服务</h5>
+      <div class="form-group">
+        <label>问题描述</label>
+        <textarea
+          class="form-control"
+          rows="3"
+          placeholder="描述需要维修的问题..."
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label>照片上传</label>
+        <input type="file" class="form-control-file" />
+      </div>
+      <button class="btn btn-primary">提交报修</button>
+    </div>
+
+    <!-- Bottom tab bar navigation -->
+    <div class="tab-bar">
+      <a href="#" class="active"
+        ><i class="fa fa-home"></i>
+        <div>房源</div></a
+      >
+      <a href="#"
+        ><i class="fa fa-comments"></i>
+        <div>消息</div></a
+      >
+      <a href="#"
+        ><i class="fa fa-user"></i>
+        <div>我的</div></a
+      >
+    </div>
+  </body>
+</html>

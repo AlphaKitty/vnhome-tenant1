@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>租房APP房东端原型图</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #ff6b6b;
+        --secondary-color: #fff4f4;
+        --text-color: #333;
+        --bg-color: #fff;
+        --card-bg: #f9f9f9;
+        --border-color: #eaeaea;
+        --success-color: #4caf50;
+        --warning-color: #ff9800;
+        --danger-color: #f44336;
+        --info-color: #2196f3;
+        --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --btn-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      [data-theme="dark"] {
+        --primary-color: #ff8787;
+        --secondary-color: #3d2d2d;
+        --text-color: #e2e8f0;
+        --bg-color: #1a202c;
+        --card-bg: #2d3748;
+        --border-color: #4a5568;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        padding: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+        gap: 15px;
+      }
+
+      select,
+      button {
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        cursor: pointer;
+        box-shadow: var(--btn-shadow);
+      }
+
+      button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+      }
+
+      .prototype-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .screen {
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        background-color: var(--bg-color);
+        position: relative;
+        border: 1px solid var(--border-color);
+      }
+
+      .screen-title {
+        text-align: center;
+        padding: 10px;
+        background-color: var(--primary-color);
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .screen-content {
+        height: 550px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* 通用组件样式 */
+      .app-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background-color: var(--primary-color);
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .status-bar {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.7rem;
+        padding: 5px 10px;
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .search-bar {
+        display: flex;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        padding: 8px 15px;
+        margin: 10px 15px;
+        align-items: center;
+      }
+
+      .search-bar input {
+        background: transparent;
+        border: none;
+        color: white;
+        width: 100%;
+        padding: 0 10px;
+        outline: none;
+      }
+
+      .search-bar input::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .bottom-nav {
+        display: flex;
+        justify-content: space-around;
+        padding: 12px 0;
+        background-color: var(--bg-color);
+        border-top: 1px solid var(--border-color);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.7rem;
+      }
+
+      .nav-item i {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        color: var(--text-color);
+      }
+
+      .nav-item.active i {
+        color: var(--primary-color);
+      }
+
+      /* 登录页样式 */
+      .login-container {
+        padding: 30px 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .login-logo {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .login-logo i {
+        font-size: 3rem;
+        color: var(--primary-color);
+      }
+
+      .login-title {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .login-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 10px;
+        width: 100%;
+        font-weight: bold;
+        margin-top: 15px;
+        box-shadow: var(--btn-shadow);
+      }
+
+      .login-options {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        font-size: 0.9rem;
+      }
+
+      /* 房源卡片样式 */
+      .property-card {
+        margin: 15px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        background-color: var(--card-bg);
+      }
+
+      .property-img {
+        height: 150px;
+        background-color: #ddd;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .property-status {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        padding: 3px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+
+      .status-active {
+        background-color: var(--success-color);
+        color: white;
+      }
+
+      .status-pending {
+        background-color: var(--warning-color);
+        color: white;
+      }
+
+      .status-inactive {
+        background-color: var(--danger-color);
+        color: white;
+      }
+
+      .property-income {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      .property-info {
+        padding: 15px;
+      }
+
+      .property-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .property-location {
+        color: #777;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+
+      .property-stats {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        margin-top: 10px;
+      }
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .stat-value {
+        font-weight: bold;
+        font-size: 1rem;
+        color: var(--primary-color);
+      }
+
+      /* 统计卡片 */
+      .stats-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+        gap: 10px;
+      }
+
+      .stat-card {
+        flex: 1;
+        background-color: var(--card-bg);
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+
+      .stat-card i {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+      }
+
+      .stat-card-value {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      .stat-card-label {
+        font-size: 0.8rem;
+        color: #777;
+      }
+
+      /* 操作按钮 */
+      .action-buttons {
+        display: flex;
+        gap: 10px;
+        margin: 20px 15px;
+      }
+
+      .action-button {
+        flex: 1;
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: var(--btn-shadow);
+      }
+
+      .primary-btn {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .secondary-btn {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+      }
+
+      /* 提示卡片 */
+      .tips-card {
+        margin: 15px;
+        background-color: var(--secondary-color);
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: var(--shadow);
+      }
+
+      .tips-card i {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+      }
+
+      .tips-content {
+        flex: 1;
+      }
+
+      .tips-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .tips-text {
+        font-size: 0.9rem;
+      }
+
+      /* 列表项 */
+      .list-item {
+        display: flex;
+        padding: 15px;
+        border-bottom: 1px solid var(--border-color);
+        align-items: center;
+      }
+
+      .list-item-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+      }
+
+      .list-item-icon i {
+        color: var(--primary-color);
+      }
+
+      .list-item-content {
+        flex: 1;
+      }
+
+      .list-item-title {
+        font-weight: 500;
+      }
+
+      .list-item-subtitle {
+        font-size: 0.8rem;
+        color: #777;
+      }
+
+      .list-item-action {
+        color: var(--primary-color);
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+      <select id="language-select">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+        <option value="vi">Tiếng Việt</option>
+      </select>
+      <button id="theme-toggle">
+        <i class="fas fa-moon"></i>
+        <span id="theme-text">切换暗色模式</span>
+      </button>
+    </div>
+
+    <h1>租房APP房东端原型图</h1>
+
+    <div class="prototype-container" id="screens">
+      <!-- 登录页面 -->
+      <div class="screen">
+        <div class="screen-title">登录</div>
+        <div class="screen-content">
+          <div class="status-bar">
+            <div>9:41</div>
+            <div>
+              <i class="fas fa-signal"></i>
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-battery-full"></i>
+            </div>
+          </div>
+          <div class="login-container">
+            <div class="login-logo">
+              <i class="fas fa-home"></i>
+            </div>
+            <h2 class="login-title">房东端登录</h2>
+            <div class="input-group">
+              <label>用户名</label>
+              <input type="text" placeholder="请输入用户名/手机号" />
+            </div>
+            <div class="input-group">
+              <label>密码</label>
+              <input type="password" placeholder="请输入密码" />
+            </div>
+            <button class="login-btn">登录</button>
+            <div class="login-options">
+              <span>注册账号</span>
+              <span>忘记密码？</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 主页 -->
+      <div class="screen">
+        <div class="screen-title">首页</div>
+        <div class="screen-content">
+          <div class="status-bar">
+            <div>9:41</div>
+            <div>
+              <i class="fas fa-signal"></i>
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-battery-full"></i>
+            </div>
+          </div>
+          <div class="app-header">
+            <div>
+              <div style="font-weight: bold">你好，张房东</div>
+              <div style="font-size: 0.8rem">欢迎回来</div>
+            </div>
+            <div>
+              <i class="fas fa-bell"></i>
+            </div>
+          </div>
+
+          <!-- 统计信息 -->
+          <div class="stats-container">
+            <div class="stat-card">
+              <i class="fas fa-home"></i>
+              <div class="stat-card-value">5</div>
+              <div class="stat-card-label">房源</div>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-user"></i>
+              <div class="stat-card-value">3</div>
+              <div class="stat-card-label">租客</div>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-money-bill-wave"></i>
+              <div class="stat-card-value">¥12000</div>
+              <div class="stat-card-label">本月收入</div>
+            </div>
+          </div>
+
+          <!-- 添加房源按钮 -->
+          <div class="action-buttons">
+            <button class="action-button primary-btn">
+              <i class="fas fa-plus"></i>
+              <span>发布新房源</span>
+            </button>
+          </div>
+
+          <!-- 提示卡片 -->
+          <div class="tips-card">
+            <i class="fas fa-lightbulb"></i>
+            <div class="tips-content">
+              <div class="tips-title">提示</div>
+              <div class="tips-text">
+                完善房源信息可以提高出租几率，建议上传高质量照片和详细描述。
+              </div>
+            </div>
+          </div>
+
+          <!-- 我的房源 -->
+          <div style="padding: 15px 15px 5px 15px; font-weight: bold">
+            我的房源
+          </div>
+
+          <div class="property-card">
+            <div
+              class="property-img"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+              "
+            >
+              <div class="property-status status-active">已出租</div>
+              <div class="property-income">月收入: ¥4500</div>
+            </div>
+            <div class="property-info">
+              <div class="property-title">
+                <span>精装修一居室 近地铁</span>
+                <i class="fas fa-ellipsis-v"></i>
+              </div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>朝阳区 - 望京</span>
+              </div>
+              <div class="property-stats">
+                <div class="stat">
+                  <div class="stat-value">1年</div>
+                  <div>租期</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-value">2023/06/10</div>
+                  <div>到期日</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-value">100%</div>
+                  <div>缴费率</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="property-card">
+            <div
+              class="property-img"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+              "
+            >
+              <div class="property-status status-pending">待审核</div>
+              <div class="property-income">期望租金: ¥3800</div>
+            </div>
+            <div class="property-info">
+              <div class="property-title">
+                <span>阳光花园 两居室 南北通透</span>
+                <i class="fas fa-ellipsis-v"></i>
+              </div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>海淀区 - 中关村</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item active">
+              <i class="fas fa-home"></i>
+              <span>首页</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-building"></i>
+              <span>房源</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-file-contract"></i>
+              <span>订单</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-comment"></i>
+              <span>消息</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-user"></i>
+              <span>我的</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 房源管理页 -->
+      <div class="screen">
+        <div class="screen-title">房源管理</div>
+        <div class="screen-content">
+          <div class="status-bar">
+            <div>9:41</div>
+            <div>
+              <i class="fas fa-signal"></i>
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-battery-full"></i>
+            </div>
+          </div>
+          <div class="app-header">
+            <div style="font-weight: bold">我的房源</div>
+            <div>
+              <i class="fas fa-plus-circle"></i>
+            </div>
+          </div>
+
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="搜索房源" />
+          </div>
+
+          <!-- 过滤条件 -->
+          <div
+            style="
+              display: flex;
+              padding: 10px 15px;
+              gap: 10px;
+              overflow-x: auto;
+            "
+          >
+            <button
+              style="
+                padding: 5px 15px;
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 15px;
+                white-space: nowrap;
+              "
+            >
+              全部
+            </button>
+            <button
+              style="
+                padding: 5px 15px;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                border: 1px solid var(--border-color);
+                border-radius: 15px;
+                white-space: nowrap;
+              "
+            >
+              已出租
+            </button>
+            <button
+              style="
+                padding: 5px 15px;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                border: 1px solid var(--border-color);
+                border-radius: 15px;
+                white-space: nowrap;
+              "
+            >
+              空置中
+            </button>
+            <button
+              style="
+                padding: 5px 15px;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                border: 1px solid var(--border-color);
+                border-radius: 15px;
+                white-space: nowrap;
+              "
+            >
+              审核中
+            </button>
+            <button
+              style="
+                padding: 5px 15px;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                border: 1px solid var(--border-color);
+                border-radius: 15px;
+                white-space: nowrap;
+              "
+            >
+              已下架
+            </button>
+          </div>
+
+          <!-- 房源列表 -->
+          <div class="property-card">
+            <div
+              class="property-img"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+              "
+            >
+              <div class="property-status status-active">已出租</div>
+            </div>
+            <div class="property-info">
+              <div class="property-title">
+                <span>精装修一居室 近地铁</span>
+                <span style="color: var(--primary-color)">¥4500/月</span>
+              </div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>朝阳区 - 望京</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 10px;
+                  font-size: 0.8rem;
+                  margin-top: 10px;
+                "
+              >
+                <div><i class="fas fa-building"></i> 1室1厅</div>
+                <div><i class="fas fa-vector-square"></i> 55m²</div>
+                <div><i class="fas fa-compass"></i> 南向</div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 15px;
+                "
+              >
+                <button
+                  style="
+                    padding: 5px 15px;
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  编辑
+                </button>
+                <button
+                  style="
+                    padding: 5px 15px;
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  查看详情
+                </button>
+                <button
+                  style="
+                    padding: 5px 15px;
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  下架
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="property-card">
+            <div
+              class="property-img"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+              "
+            >
+              <div class="property-status status-pending">待审核</div>
+            </div>
+            <div class="property-info">
+              <div class="property-title">
+                <span>阳光花园 两居室 南北通透</span>
+                <span style="color: var(--primary-color)">¥3800/月</span>
+              </div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>海淀区 - 中关村</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 10px;
+                  font-size: 0.8rem;
+                  margin-top: 10px;
+                "
+              >
+                <div><i class="fas fa-building"></i> 2室1厅</div>
+                <div><i class="fas fa-vector-square"></i> 75m²</div>
+                <div><i class="fas fa-compass"></i> 南北通透</div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 15px;
+                "
+              >
+                <button
+                  style="
+                    padding: 5px 15px;
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  编辑
+                </button>
+                <button
+                  style="
+                    padding: 5px 15px;
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  查看详情
+                </button>
+                <button
+                  style="
+                    padding: 5px 15px;
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  删除
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="property-card">
+            <div
+              class="property-img"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50JTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60');
+              "
+            >
+              <div
+                class="property-status"
+                style="background-color: var(--info-color)"
+              >
+                空置中
+              </div>
+            </div>
+            <div class="property-info">
+              <div class="property-title">
+                <span>现代风格三居室 大阳台</span>
+                <span style="color: var(--primary-color)">¥6500/月</span>
+              </div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>东城区 - 东直门</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 10px;
+                  font-size: 0.8rem;
+                  margin-top: 10px;
+                "
+              >
+                <div><i class="fas fa-building"></i> 3室2厅</div>
+                <div><i class="fas fa-vector-square"></i> 120m²</div>
+                <div><i class="fas fa-compass"></i> 东南向</div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 15px;
+                "
+              >
+                <button
+                  style="
+                    padding: 5px 15px;
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  编辑
+                </button>
+                <button
+                  style="
+                    padding: 5px 15px;
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  查看详情
+                </button>
+                <button
+                  style="
+                    padding: 5px 15px;
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  下架
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item">
+              <i class="fas fa-home"></i>
+              <span>首页</span>
+            </div>
+            <div class="nav-item active">
+              <i class="fas fa-building"></i>
+              <span>房源</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-file-contract"></i>
+              <span>订单</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-comment"></i>
+              <span>消息</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-user"></i>
+              <span>我的</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 房源详情页 -->
+      <div class="screen">
+        <div class="screen-title">房源详情</div>
+        <div class="screen-content">
+          <div class="status-bar">
+            <div>9:41</div>
+            <div>
+              <i class="fas fa-signal"></i>
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-battery-full"></i>
+            </div>
+          </div>
+          <div style="position: relative">
+            <div
+              style="
+                height: 200px;
+                background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60');
+                background-size: cover;
+                background-position: center;
+              "
+            ></div>
+            <button
+              style="
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                background-color: rgba(0, 0, 0, 0.3);
+                color: white;
+                border: none;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <i class="fas fa-arrow-left"></i>
+            </button>
+            <div
+              style="
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+                display: flex;
+                gap: 10px;
+              "
+            >
+              <button
+                style="
+                  background-color: rgba(0, 0, 0, 0.3);
+                  color: white;
+                  border: none;
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <i class="fas fa-edit"></i>
+              </button>
+              <button
+                style="
+                  background-color: rgba(0, 0, 0, 0.3);
+                  color: white;
+                  border: none;
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <i class="fas fa-share-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <div style="padding: 15px">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  font-size: 1.3rem;
+                  font-weight: bold;
+                  color: var(--primary-color);
+                "
+              >
+                ¥4500/月
+              </div>
+              <div
+                style="
+                  background-color: var(--success-color);
+                  color: white;
+                  padding: 3px 10px;
+                  border-radius: 15px;
+                  font-size: 0.8rem;
+                  font-weight: bold;
+                "
+              >
+                已出租
+              </div>
+            </div>
+
+            <div style="font-size: 1.2rem; font-weight: bold; margin-top: 10px">
+              精装修一居室 近地铁
+            </div>
+
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                color: #777;
+              "
+            >
+              <i class="fas fa-map-marker-alt"></i>
+              <span style="margin-left: 5px">朝阳区 - 望京</span>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                margin: 15px 0;
+                padding: 15px 0;
+                border-top: 1px solid var(--border-color);
+                border-bottom: 1px solid var(--border-color);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div style="font-weight: bold">1室1厅</div>
+                <div style="font-size: 0.8rem; color: #777">户型</div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div style="font-weight: bold">55m²</div>
+                <div style="font-size: 0.8rem; color: #777">面积</div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div style="font-weight: bold">南</div>
+                <div style="font-size: 0.8rem; color: #777">朝向</div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div style="font-weight: bold">2/18层</div>
+                <div style="font-size: 0.8rem; color: #777">楼层</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 15px">
+              <div style="font-weight: bold; margin-bottom: 10px">
+                当前租客信息
+              </div>
+              <div
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  padding: 15px;
+                  display: flex;
+                  align-items: center;
+                "
+              >
+                <div
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    background-color: #ddd;
+                    margin-right: 15px;
+                  "
+                ></div>
+                <div style="flex: 1">
+                  <div style="font-weight: 500">李小明</div>
+                  <div style="font-size: 0.8rem; color: #777">
+                    入住日期: 2022/06/10
+                  </div>
+                  <div style="font-size: 0.8rem; color: #777">
+                    合同到期: 2023/06/10
+                  </div>
+                </div>
+                <button
+                  style="
+                    padding: 8px 15px;
+                    background-color: var(--primary-color);
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 0.8rem;
+                  "
+                >
+                  联系
+                </button>
+              </div>
+            </div>
+
+            <div style="margin-top: 15px">
+              <div style="font-weight: bold; margin-bottom: 10px">收款信息</div>
+              <div
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  padding: 15px;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <div>本月租金</div>
+                  <div style="font-weight: bold; color: var(--primary-color)">
+                    ¥4500
+                  </div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <div>押金</div>
+                  <div style="font-weight: bold">¥4500</div>
+                </div>
+                <div style="display: flex; justify-content: space-between">
+                  <div>下次付款日</div>
+                  <div style="font-weight: bold">2022/11/10</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 15px">
+              <div style="font-weight: bold; margin-bottom: 10px">房源描述</div>
+              <div
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  padding: 15px;
+                  font-size: 0.9rem;
+                  line-height: 1.5;
+                "
+              >
+                此房为精装修一居室，家具家电齐全，拎包入住。小区环境优美，周边配套设施完善，交通便利，紧邻地铁15号线。
+              </div>
+            </div>
+
+            <!-- 底部操作按钮 -->
+            <div style="display: flex; gap: 10px; margin-top: 20px">
+              <button
+                style="
+                  flex: 1;
+                  padding: 12px;
+                  border-radius: 10px;
+                  background-color: var(--secondary-color);
+                  color: var(--primary-color);
+                  border: 1px solid var(--primary-color);
+                  font-weight: bold;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 8px;
+                "
+              >
+                <i class="fas fa-edit"></i>
+                <span>编辑房源</span>
+              </button>
+              <button
+                style="
+                  flex: 1;
+                  padding: 12px;
+                  border-radius: 10px;
+                  background-color: var(--primary-color);
+                  color: white;
+                  border: none;
+                  font-weight: bold;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 8px;
+                "
+              >
+                <i class="fas fa-file-contract"></i>
+                <span>查看合同</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 订单管理页 -->
+      <div class="screen">
+        <div class="screen-title">订单管理</div>
+        <div class="screen-content">
+          <div class="status-bar">
+            <div>9:41</div>
+            <div>
+              <i class="fas fa-signal"></i>
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-battery-full"></i>
+            </div>
+          </div>
+          <div class="app-header">
+            <div style="font-weight: bold">订单管理</div>
+            <div>
+              <i class="fas fa-filter"></i>
+            </div>
+          </div>
+
+          <!-- 选项卡 -->
+          <div
+            style="display: flex; border-bottom: 1px solid var(--border-color)"
+          >
+            <div
+              style="
+                flex: 1;
+                text-align: center;
+                padding: 10px;
+                border-bottom: 2px solid var(--primary-color);
+                color: var(--primary-color);
+                font-weight: 500;
+              "
+            >
+              租约订单
+            </div>
+            <div style="flex: 1; text-align: center; padding: 10px">
+              报修订单
+            </div>
+          </div>
+
+          <!-- 订单列表 -->
+          <div class="list-item">
+            <div class="list-item-icon">
+              <i class="fas fa-file-contract"></i>
+            </div>
+            <div class="list-item-content">
+              <div class="list-item-title">精装修一居室 近地铁</div>
+              <div class="list-item-subtitle">
+                李小明 | 2022/06/10 - 2023/06/10
+              </div>
+            </div>
+            <div class="list-item-action">查看</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-item-icon">
+              <i class="fas fa-file-contract"></i>
+            </div>
+            <div class="list-item-content">
+              <div class="list-item-title">现代风格三居室 大阳台</div>
+              <div class="list-item-subtitle">
+                张三 | 2022/01/15 - 2022/10/15
+              </div>
+            </div>
+            <div class="list-item-action">查看</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-item-icon">
+              <i class="fas fa-file-contract"></i>
+            </div>
+            <div class="list-item-content">
+              <div class="list-item-title">市中心两居室 精装修</div>
+              <div class="list-item-subtitle">
+                王五 | 2022/03/01 - 2023/03/01
+              </div>
+            </div>
+            <div class="list-item-action">查看</div>
+          </div>
+
+          <div
+            style="
+              padding: 15px;
+              color: #777;
+              text-align: center;
+              font-size: 0.9rem;
+            "
+          >
+            没有更多订单了
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item">
+              <i class="fas fa-home"></i>
+              <span>首页</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-building"></i>
+              <span>房源</span>
+            </div>
+            <div class="nav-item active">
+              <i class="fas fa-file-contract"></i>
+              <span>订单</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-comment"></i>
+              <span>消息</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-user"></i>
+              <span>我的</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 消息页面 -->
+      <div class="screen">
+        <div class="screen-title">消息</div>
+        <div class="screen-content">
+          <div class="status-bar">
+            <div>9:41</div>
+            <div>
+              <i class="fas fa-signal"></i>
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-battery-full"></i>
+            </div>
+          </div>
+          <div class="app-header">
+            <div style="font-weight: bold">消息中心</div>
+            <div>
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+          </div>
+
+          <!-- 消息列表 -->
+          <div
+            style="
+              display: flex;
+              padding: 15px;
+              border-bottom: 1px solid var(--border-color);
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #ddd;
+                margin-right: 15px;
+                background-image: url('https://randomuser.me/api/portraits/men/32.jpg');
+                background-size: cover;
+              "
+            ></div>
+            <div style="flex: 1">
+              <div style="display: flex; justify-content: space-between">
+                <div style="font-weight: 500">李小明</div>
+                <div style="font-size: 0.8rem; color: #777">10:30</div>
+              </div>
+              <div style="font-size: 0.9rem; color: #777">
+                请问空调什么时候能修好？最近天气热...
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              padding: 15px;
+              border-bottom: 1px solid var(--border-color);
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #ddd;
+                margin-right: 15px;
+                background-image: url('https://randomuser.me/api/portraits/women/44.jpg');
+                background-size: cover;
+              "
+            ></div>
+            <div style="flex: 1">
+              <div style="display: flex; justify-content: space-between">
+                <div style="font-weight: 500">王五</div>
+                <div style="font-size: 0.8rem; color: #777">昨天</div>
+              </div>
+              <div style="font-size: 0.9rem; color: #777">
+                您好，我想询问一下下个月的续租事宜
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              padding: 15px;
+              border-bottom: 1px solid var(--border-color);
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #ddd;
+                margin-right: 15px;
+                background-image: url('https://randomuser.me/api/portraits/men/67.jpg');
+                background-size: cover;
+              "
+            ></div>
+            <div style="flex: 1">
+              <div style="display: flex; justify-content: space-between">
+                <div style="font-weight: 500">张三</div>
+                <div style="font-size: 0.8rem; color: #777">3天前</div>
+              </div>
+              <div style="font-size: 0.9rem; color: #777">
+                房东你好，我已经完成了本月的租金支付
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              padding: 15px;
+              border-bottom: 1px solid var(--border-color);
+              align-items: center;
+            "
+          >
+            <div
+              style="
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: var(--primary-color);
+                margin-right: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+              "
+            >
+              <i class="fas fa-headset"></i>
+            </div>
+            <div style="flex: 1">
+              <div style="display: flex; justify-content: space-between">
+                <div style="font-weight: 500">客服中心</div>
+                <div style="font-size: 0.8rem; color: #777">5天前</div>
+              </div>
+              <div style="font-size: 0.9rem; color: #777">
+                尊敬的房东，您的房源已审核通过，可上线...
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item">
+              <i class="fas fa-home"></i>
+              <span>首页</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-building"></i>
+              <span>房源</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-file-contract"></i>
+              <span>订单</span>
+            </div>
+            <div class="nav-item active">
+              <i class="fas fa-comment"></i>
+              <span>消息</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-user"></i>
+              <span>我的</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 聊天详情页 -->
+      <div class="screen">
+        <div class="screen-title">聊天详情</div>
+        <div class="screen-content">
+          <div class="status-bar">
+            <div>9:41</div>
+            <div>
+              <i class="fas fa-signal"></i>
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-battery-full"></i>
+            </div>
+          </div>
+          <div class="app-header">
+            <div style="display: flex; align-items: center">
+              <i class="fas fa-arrow-left" style="margin-right: 15px"></i>
+              <div style="font-weight: bold">李小明</div>
+            </div>
+            <div>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+          </div>
+
+          <!-- 聊天内容 -->
+          <div
+            style="padding: 15px; height: calc(100% - 130px); overflow-y: auto"
+          >
+            <div
+              style="
+                text-align: center;
+                color: #777;
+                font-size: 0.8rem;
+                margin: 10px 0;
+              "
+            >
+              今天 10:30
+            </div>
+
+            <div style="display: flex; margin-bottom: 15px">
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background-color: #ddd;
+                  margin-right: 10px;
+                  background-image: url('https://randomuser.me/api/portraits/men/32.jpg');
+                  background-size: cover;
+                "
+              ></div>
+              <div
+                style="
+                  background-color: var(--card-bg);
+                  padding: 10px 15px;
+                  border-radius: 15px;
+                  max-width: 70%;
+                  font-size: 0.9rem;
+                "
+              >
+                房东您好，请问空调什么时候能修好？最近天气热，晚上睡觉很不舒服。
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                justify-content: flex-end;
+                margin-bottom: 15px;
+              "
+            >
+              <div
+                style="
+                  background-color: var(--primary-color);
+                  color: white;
+                  padding: 10px 15px;
+                  border-radius: 15px;
+                  max-width: 70%;
+                  font-size: 0.9rem;
+                "
+              >
+                您好，我已经联系维修师傅，他会在今天下午2点左右过去，请您安排好时间。
+              </div>
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background-color: #ddd;
+                  margin-left: 10px;
+                "
+              ></div>
+            </div>
+
+            <div style="display: flex; margin-bottom: 15px">
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background-color: #ddd;
+                  margin-right: 10px;
+                  background-image: url('https://randomuser.me/api/portraits/men/32.jpg');
+                  background-size: cover;
+                "
+              ></div>
+              <div
+                style="
+                  background-color: var(--card-bg);
+                  padding: 10px 15px;
+                  border-radius: 15px;
+                  max-width: 70%;
+                  font-size: 0.9rem;
+                "
+              >
+                好的，非常感谢您的及时处理！
+              </div>
+            </div>
+          </div>
+
+          <!-- 输入框 -->
+          <div
+            style="
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              padding: 10px 15px;
+              display: flex;
+              align-items: center;
+              background-color: var(--bg-color);
+              border-top: 1px solid var(--border-color);
+            "
+          >
+            <i
+              class="fas fa-plus-circle"
+              style="font-size: 1.5rem; color: #777; margin-right: 10px"
+            ></i>
+            <input
+              type="text"
+              placeholder="输入消息..."
+              style="
+                flex: 1;
+                padding: 10px;
+                border-radius: 20px;
+                border: 1px solid var(--border-color);
+                background-color: var(--bg-color);
+                outline: none;
+              "
+            />
+            <i
+              class="fas fa-paper-plane"
+              style="
+                font-size: 1.2rem;
+                color: var(--primary-color);
+                margin-left: 10px;
+              "
+            ></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- 个人中心页 -->
+      <div class="screen">
+        <div class="screen-title">个人中心</div>
+        <div class="screen-content">
+          <div class="status-bar">
+            <div>9:41</div>
+            <div>
+              <i class="fas fa-signal"></i>
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-battery-full"></i>
+            </div>
+          </div>
+          <div
+            style="
+              background-color: var(--primary-color);
+              padding: 30px 20px;
+              color: white;
+              display: flex;
+              align-items: center;
+              gap: 15px;
+            "
+          >
+            <div
+              style="
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                background-color: #ddd;
+                background-image: url('https://randomuser.me/api/portraits/men/75.jpg');
+                background-size: cover;
+              "
+            ></div>
+            <div style="flex: 1">
+              <div style="font-size: 1.2rem; font-weight: bold">张房东</div>
+              <div style="font-size: 0.9rem">138****6789</div>
+            </div>
+            <div>
+              <i class="fas fa-qrcode" style="font-size: 1.5rem"></i>
+            </div>
+          </div>
+
+          <!-- 账户信息 -->
+          <div
+            style="
+              margin: 20px 15px;
+              background-color: var(--card-bg);
+              border-radius: 10px;
+              overflow: hidden;
+              box-shadow: var(--shadow);
+            "
+          >
+            <div
+              style="
+                padding: 15px;
+                border-bottom: 1px solid var(--border-color);
+                font-weight: bold;
+              "
+            >
+              账户信息
+            </div>
+            <div
+              style="
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid var(--border-color);
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    color: var(--primary-color);
+                  "
+                >
+                  ¥12,345
+                </div>
+                <div style="font-size: 0.8rem; color: #777">账户余额</div>
+              </div>
+              <button
+                style="
+                  padding: 5px 15px;
+                  background-color: var(--primary-color);
+                  color: white;
+                  border: none;
+                  border-radius: 5px;
+                "
+              >
+                提现
+              </button>
+            </div>
+            <div style="display: flex; text-align: center">
+              <div style="flex: 1; padding: 15px">
+                <div style="font-weight: bold">5</div>
+                <div style="font-size: 0.8rem; color: #777">房源数量</div>
+              </div>
+              <div
+                style="
+                  flex: 1;
+                  padding: 15px;
+                  border-left: 1px solid var(--border-color);
+                  border-right: 1px solid var(--border-color);
+                "
+              >
+                <div style="font-weight: bold">3</div>
+                <div style="font-size: 0.8rem; color: #777">租客数量</div>
+              </div>
+              <div style="flex: 1; padding: 15px">
+                <div style="font-weight: bold">4.8</div>
+                <div style="font-size: 0.8rem; color: #777">信用评分</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 功能列表 -->
+          <div class="list-item">
+            <div class="list-item-icon">
+              <i class="fas fa-wallet"></i>
+            </div>
+            <div class="list-item-content">
+              <div class="list-item-title">我的钱包</div>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #777"></i>
+          </div>
+
+          <div class="list-item">
+            <div class="list-item-icon">
+              <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <div class="list-item-content">
+              <div class="list-item-title">收支明细</div>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #777"></i>
+          </div>
+
+          <div class="list-item">
+            <div class="list-item-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="list-item-content">
+              <div class="list-item-title">安全中心</div>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #777"></i>
+          </div>
+
+          <div class="list-item">
+            <div class="list-item-icon">
+              <i class="fas fa-user-cog"></i>
+            </div>
+            <div class="list-item-content">
+              <div class="list-item-title">账号设置</div>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #777"></i>
+          </div>
+
+          <div class="list-item">
+            <div class="list-item-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <div class="list-item-content">
+              <div class="list-item-title">客服中心</div>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #777"></i>
+          </div>
+
+          <button
+            style="
+              margin: 30px 15px;
+              padding: 12px;
+              width: calc(100% - 30px);
+              background-color: var(--secondary-color);
+              color: var(--primary-color);
+              border: 1px solid var(--primary-color);
+              border-radius: 10px;
+              font-weight: bold;
+            "
+          >
+            退出登录
+          </button>
+
+          <div class="bottom-nav">
+            <div class="nav-item">
+              <i class="fas fa-home"></i>
+              <span>首页</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-building"></i>
+              <span>房源</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-file-contract"></i>
+              <span>订单</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-comment"></i>
+              <span>消息</span>
+            </div>
+            <div class="nav-item active">
+              <i class="fas fa-user"></i>
+              <span>我的</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 翻译数据
+      const translations = {
+        zh: {
+          appTitle: "租房APP房东端原型图",
+          themeLight: "切换暗色模式",
+          themeDark: "切换亮色模式",
+          login: "登录",
+          home: "首页",
+          properties: "房源",
+          orders: "订单",
+          messages: "消息",
+          profile: "我的",
+          landlordLogin: "房东端登录",
+          username: "用户名",
+          password: "密码",
+          loginButton: "登录",
+          register: "注册账号",
+          forgotPassword: "忘记密码？",
+          hello: "你好，",
+          welcomeBack: "欢迎回来",
+          propertyCount: "房源",
+          tenantCount: "租客",
+          monthlyIncome: "本月收入",
+          addNewProperty: "发布新房源",
+          tip: "提示",
+          tipText:
+            "完善房源信息可以提高出租几率，建议上传高质量照片和详细描述。",
+          myProperties: "我的房源",
+          rented: "已出租",
+          pending: "待审核",
+          vacant: "空置中",
+          monthlyRent: "月收入: ",
+          expectedRent: "期望租金: ",
+          rentPeriod: "租期",
+          expiryDate: "到期日",
+          paymentRate: "缴费率",
+        },
+        en: {
+          appTitle: "Rental App Landlord Prototype",
+          themeLight: "Switch to Dark Mode",
+          themeDark: "Switch to Light Mode",
+          login: "Login",
+          home: "Home",
+          properties: "Properties",
+          orders: "Orders",
+          messages: "Messages",
+          profile: "Profile",
+          landlordLogin: "Landlord Login",
+          username: "Username",
+          password: "Password",
+          loginButton: "Login",
+          register: "Register",
+          forgotPassword: "Forgot Password?",
+          hello: "Hello, ",
+          welcomeBack: "Welcome back",
+          propertyCount: "Properties",
+          tenantCount: "Tenants",
+          monthlyIncome: "Monthly Income",
+          addNewProperty: "Add New Property",
+          tip: "Tip",
+          tipText:
+            "Complete property information can increase rental chances. High-quality photos and detailed descriptions are recommended.",
+          myProperties: "My Properties",
+          rented: "Rented",
+          pending: "Pending",
+          vacant: "Vacant",
+          monthlyRent: "Monthly: ",
+          expectedRent: "Expected: ",
+          rentPeriod: "Period",
+          expiryDate: "Expiry",
+          paymentRate: "Payment",
+        },
+        vi: {
+          appTitle: "Ứng Dụng Cho Thuê - Phiên Bản Chủ Nhà",
+          themeLight: "Chuyển sang Chế độ Tối",
+          themeDark: "Chuyển sang Chế độ Sáng",
+          login: "Đăng Nhập",
+          home: "Trang Chủ",
+          properties: "Nhà",
+          orders: "Đơn Hàng",
+          messages: "Tin Nhắn",
+          profile: "Cá Nhân",
+          landlordLogin: "Đăng Nhập Chủ Nhà",
+          username: "Tên Đăng Nhập",
+          password: "Mật Khẩu",
+          loginButton: "Đăng Nhập",
+          register: "Đăng Ký",
+          forgotPassword: "Quên Mật Khẩu?",
+          hello: "Xin chào, ",
+          welcomeBack: "Chào mừng trở lại",
+          propertyCount: "Nhà",
+          tenantCount: "Người Thuê",
+          monthlyIncome: "Thu Nhập Tháng",
+          addNewProperty: "Thêm Nhà Mới",
+          tip: "Mẹo",
+          tipText:
+            "Hoàn thiện thông tin nhà có thể tăng cơ hội cho thuê. Nên đăng ảnh chất lượng cao và mô tả chi tiết.",
+          myProperties: "Nhà Của Tôi",
+          rented: "Đã Thuê",
+          pending: "Đang Chờ",
+          vacant: "Còn Trống",
+          monthlyRent: "Hàng Tháng: ",
+          expectedRent: "Dự Kiến: ",
+          rentPeriod: "Thời Hạn",
+          expiryDate: "Hết Hạn",
+          paymentRate: "Thanh Toán",
+        },
+      };
+
+      // 当前语言和主题
+      let currentLanguage = "zh";
+      let isDarkTheme = false;
+
+      // 获取DOM元素
+      const languageSelect = document.getElementById("language-select");
+      const themeToggle = document.getElementById("theme-toggle");
+      const themeText = document.getElementById("theme-text");
+      const appTitle = document.querySelector("h1");
+
+      // 更新UI语言
+      function updateLanguage(lang) {
+        currentLanguage = lang;
+        document.documentElement.setAttribute("lang", lang);
+
+        // 更新标题
+        appTitle.textContent = translations[lang].appTitle;
+
+        // 更新主题按钮文本
+        themeText.textContent = isDarkTheme
+          ? translations[lang].themeDark
+          : translations[lang].themeLight;
+      }
+
+      // 切换主题
+      function toggleTheme() {
+        isDarkTheme = !isDarkTheme;
+        document.body.setAttribute(
+          "data-theme",
+          isDarkTheme ? "dark" : "light"
+        );
+
+        // 更新图标和文本
+        themeToggle.querySelector("i").className = isDarkTheme
+          ? "fas fa-sun"
+          : "fas fa-moon";
+        themeText.textContent = isDarkTheme
+          ? translations[currentLanguage].themeDark
+          : translations[currentLanguage].themeLight;
+      }
+
+      // 事件监听
+      languageSelect.addEventListener("change", (e) =>
+        updateLanguage(e.target.value)
+      );
+      themeToggle.addEventListener("click", toggleTheme);
+
+      // 初始化
+      document.addEventListener("DOMContentLoaded", function () {
+        updateLanguage(currentLanguage);
+      });
+    </script>
+  </body>
+</html>

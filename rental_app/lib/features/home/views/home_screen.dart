@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rental_app/shared/widgets/bottom_nav_bar_widget.dart';
+import '../viewmodels/bottom_nav_provider.dart';
+import 'home_tab_screen.dart';
+
+/// 主页面容器
+class HomeScreen extends ConsumerWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentIndex = ref.watch(bottomNavProvider);
+
+    // 根据当前索引返回对应的页面
+    Widget getScreen(int index) {
+      switch (index) {
+        case 0:
+          return const HomeTabScreen();
+        case 1:
+          return const _PlaceholderScreen(title: '搜索');
+        case 2:
+          return const _PlaceholderScreen(title: '收藏');
+        case 3:
+          return const _PlaceholderScreen(title: '消息');
+        case 4:
+          return const _PlaceholderScreen(title: '我的');
+        default:
+          return const HomeTabScreen();
+      }
+    }
+
+    return Scaffold(
+      body: getScreen(currentIndex),
+      bottomNavigationBar: BottomNavBarWidget(
+        currentIndex: currentIndex,
+        onTabSelected: (index) {
+          ref.read(bottomNavProvider.notifier).setIndex(index);
+        },
+      ),
+    );
+  }
+}
+
+/// 临时占位页面
+class _PlaceholderScreen extends StatelessWidget {
+  final String title;
+
+  const _PlaceholderScreen({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.construction, size: 80, color: Colors.grey),
+            const SizedBox(height: 16),
+            Text(
+              '$title功能正在开发中...',
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
