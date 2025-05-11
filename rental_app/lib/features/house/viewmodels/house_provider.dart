@@ -85,25 +85,38 @@ class HouseListNotifier extends StateNotifier<HouseListState> {
           direction: '南',
           tags: ['合租', '朝南', '拎包入住'],
         ),
+        HouseModel(
+          id: '4',
+          title: '豪华三居室 全新装修 高层景观房',
+          location: '朝阳区 - CBD',
+          district: '朝阳区',
+          description: '高档小区，三居室，全新豪华装修，视野开阔，配套设施齐全。',
+          price: 12000,
+          roomType: '3室2厅',
+          area: 140,
+          floor: '25/32层',
+          direction: '东南',
+          tags: ['豪华装修', '高层景观', '品质小区'],
+        ),
+        HouseModel(
+          id: '5',
+          title: '温馨一居室 紧邻地铁 配套齐全',
+          location: '大兴区 - 亦庄',
+          district: '大兴区',
+          description: '此房紧邻地铁站，出行便利，周边配套齐全，拎包入住。',
+          price: 3200,
+          roomType: '1室1厅',
+          area: 50,
+          floor: '6/18层',
+          direction: '南',
+          tags: ['近地铁', '拎包入住', '配套齐全'],
+        ),
       ];
 
       state = state.copyWithData(houses);
     } catch (e) {
       state = state.copyWithError('获取房源失败: ${e.toString()}');
     }
-  }
-
-  /// 切换房源收藏状态
-  void toggleFavorite(String houseId) {
-    final updatedHouses =
-        state.houses.map((house) {
-          if (house.id == houseId) {
-            return house.toggleFavorite();
-          }
-          return house;
-        }).toList();
-
-    state = state.copyWithData(updatedHouses);
   }
 
   /// 获取房源详情

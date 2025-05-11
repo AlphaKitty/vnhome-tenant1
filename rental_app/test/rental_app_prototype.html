@@ -2391,6 +2391,1335 @@
           </div>
         </div>
       </div>
+
+      <!-- 设置页面 -->
+      <div class="screen">
+        <div class="screen-title">设置</div>
+        <div class="screen-content">
+          <div class="app-header">
+            <div style="display: flex; align-items: center">
+              <i class="fas fa-arrow-left" style="margin-right: 15px"></i>
+              <div>设置</div>
+            </div>
+            <div></div>
+          </div>
+
+          <div style="padding: 20px 15px; background-color: var(--bg-color)">
+            <!-- 个人信息设置 -->
+            <div style="margin-bottom: 20px">
+              <div style="font-weight: bold; margin-bottom: 15px">个人信息</div>
+              <div
+                class="profile-item"
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  margin-bottom: 1px;
+                "
+              >
+                <i class="fas fa-user"></i>
+                <span>修改个人资料</span>
+                <i
+                  class="fas fa-chevron-right"
+                  style="margin-left: auto; color: #999"
+                ></i>
+              </div>
+              <div
+                class="profile-item"
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  margin-bottom: 1px;
+                "
+              >
+                <i class="fas fa-key"></i>
+                <span>修改密码</span>
+                <i
+                  class="fas fa-chevron-right"
+                  style="margin-left: auto; color: #999"
+                ></i>
+              </div>
+              <div
+                class="profile-item"
+                style="background-color: var(--card-bg); border-radius: 10px"
+              >
+                <i class="fas fa-phone"></i>
+                <span>绑定手机号</span>
+                <i
+                  class="fas fa-chevron-right"
+                  style="margin-left: auto; color: #999"
+                ></i>
+              </div>
+            </div>
+
+            <!-- 应用设置 -->
+            <div style="margin-bottom: 20px">
+              <div style="font-weight: bold; margin-bottom: 15px">应用设置</div>
+
+              <!-- 主题设置 -->
+              <div
+                class="profile-item"
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  margin-bottom: 1px;
+                "
+              >
+                <i class="fas fa-moon"></i>
+                <span>夜间模式</span>
+                <div style="margin-left: auto">
+                  <label class="switch">
+                    <input type="checkbox" id="theme-switch" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 语言设置 -->
+              <div
+                class="profile-item"
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  margin-bottom: 1px;
+                  justify-content: space-between;
+                "
+              >
+                <div style="display: flex; align-items: center">
+                  <i class="fas fa-language"></i>
+                  <span>语言</span>
+                </div>
+                <div style="display: flex; align-items: center">
+                  <span style="color: #999; margin-right: 5px">中文</span>
+                  <i class="fas fa-chevron-right" style="color: #999"></i>
+                </div>
+              </div>
+
+              <!-- 消息通知 -->
+              <div
+                class="profile-item"
+                style="background-color: var(--card-bg); border-radius: 10px"
+              >
+                <i class="fas fa-bell"></i>
+                <span>消息通知</span>
+                <i
+                  class="fas fa-chevron-right"
+                  style="margin-left: auto; color: #999"
+                ></i>
+              </div>
+            </div>
+
+            <!-- 支付与安全 -->
+            <div style="margin-bottom: 20px">
+              <div style="font-weight: bold; margin-bottom: 15px">
+                支付与安全
+              </div>
+              <div
+                class="profile-item"
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  margin-bottom: 1px;
+                "
+              >
+                <i class="fas fa-credit-card"></i>
+                <span>支付管理</span>
+                <i
+                  class="fas fa-chevron-right"
+                  style="margin-left: auto; color: #999"
+                ></i>
+              </div>
+              <div
+                class="profile-item"
+                style="background-color: var(--card-bg); border-radius: 10px"
+              >
+                <i class="fas fa-shield-alt"></i>
+                <span>隐私设置</span>
+                <i
+                  class="fas fa-chevron-right"
+                  style="margin-left: auto; color: #999"
+                ></i>
+              </div>
+            </div>
+
+            <!-- 其他设置 -->
+            <div style="margin-bottom: 20px">
+              <div style="font-weight: bold; margin-bottom: 15px">其他</div>
+              <div
+                class="profile-item"
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  margin-bottom: 1px;
+                "
+              >
+                <i class="fas fa-info-circle"></i>
+                <span>关于我们</span>
+                <i
+                  class="fas fa-chevron-right"
+                  style="margin-left: auto; color: #999"
+                ></i>
+              </div>
+              <div
+                class="profile-item"
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  margin-bottom: 1px;
+                "
+              >
+                <i class="fas fa-question-circle"></i>
+                <span>帮助中心</span>
+                <i
+                  class="fas fa-chevron-right"
+                  style="margin-left: auto; color: #999"
+                ></i>
+              </div>
+              <div
+                class="profile-item"
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  margin-bottom: 1px;
+                "
+              >
+                <i class="fas fa-file-alt"></i>
+                <span>用户协议</span>
+                <i
+                  class="fas fa-chevron-right"
+                  style="margin-left: auto; color: #999"
+                ></i>
+              </div>
+              <div
+                class="profile-item"
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  color: #ff4757;
+                "
+              >
+                <i class="fas fa-sign-out-alt" style="color: #ff4757"></i>
+                <span>退出登录</span>
+              </div>
+            </div>
+          </div>
+
+          <style>
+            .switch {
+              position: relative;
+              display: inline-block;
+              width: 50px;
+              height: 24px;
+            }
+
+            .switch input {
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #ccc;
+              transition: 0.4s;
+            }
+
+            .slider:before {
+              position: absolute;
+              content: "";
+              height: 20px;
+              width: 20px;
+              left: 3px;
+              bottom: 2px;
+              background-color: white;
+              transition: 0.4s;
+            }
+
+            input:checked + .slider {
+              background-color: var(--primary-color);
+            }
+
+            input:checked + .slider:before {
+              transform: translateX(24px);
+            }
+
+            .slider.round {
+              border-radius: 24px;
+            }
+
+            .slider.round:before {
+              border-radius: 50%;
+            }
+          </style>
+        </div>
+      </div>
+
+      <!-- 客服中心页面 -->
+      <div class="screen">
+        <div class="screen-title">客服中心</div>
+        <div class="screen-content">
+          <div class="app-header">
+            <div style="display: flex; align-items: center">
+              <i class="fas fa-arrow-left" style="margin-right: 15px"></i>
+              <div>客服中心</div>
+            </div>
+            <div></div>
+          </div>
+
+          <div style="padding: 20px 15px; background-color: var(--bg-color)">
+            <!-- 常见问题 -->
+            <div style="margin-bottom: 25px">
+              <div
+                style="
+                  font-weight: bold;
+                  font-size: 1.1rem;
+                  margin-bottom: 15px;
+                "
+              >
+                常见问题
+              </div>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 10px;
+                "
+              >
+                <div
+                  style="
+                    background-color: var(--card-bg);
+                    border-radius: 10px;
+                    padding: 15px;
+                    text-align: center;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  "
+                >
+                  <i
+                    class="fas fa-home"
+                    style="
+                      font-size: 24px;
+                      color: var(--primary-color);
+                      margin-bottom: 10px;
+                    "
+                  ></i>
+                  <div style="font-size: 0.9rem">租房指南</div>
+                </div>
+                <div
+                  style="
+                    background-color: var(--card-bg);
+                    border-radius: 10px;
+                    padding: 15px;
+                    text-align: center;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  "
+                >
+                  <i
+                    class="fas fa-file-contract"
+                    style="
+                      font-size: 24px;
+                      color: var(--primary-color);
+                      margin-bottom: 10px;
+                    "
+                  ></i>
+                  <div style="font-size: 0.9rem">合同问题</div>
+                </div>
+                <div
+                  style="
+                    background-color: var(--card-bg);
+                    border-radius: 10px;
+                    padding: 15px;
+                    text-align: center;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  "
+                >
+                  <i
+                    class="fas fa-money-bill-wave"
+                    style="
+                      font-size: 24px;
+                      color: var(--primary-color);
+                      margin-bottom: 10px;
+                    "
+                  ></i>
+                  <div style="font-size: 0.9rem">支付退款</div>
+                </div>
+                <div
+                  style="
+                    background-color: var(--card-bg);
+                    border-radius: 10px;
+                    padding: 15px;
+                    text-align: center;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  "
+                >
+                  <i
+                    class="fas fa-tools"
+                    style="
+                      font-size: 24px;
+                      color: var(--primary-color);
+                      margin-bottom: 10px;
+                    "
+                  ></i>
+                  <div style="font-size: 0.9rem">报修服务</div>
+                </div>
+                <div
+                  style="
+                    background-color: var(--card-bg);
+                    border-radius: 10px;
+                    padding: 15px;
+                    text-align: center;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  "
+                >
+                  <i
+                    class="fas fa-calendar-check"
+                    style="
+                      font-size: 24px;
+                      color: var(--primary-color);
+                      margin-bottom: 10px;
+                    "
+                  ></i>
+                  <div style="font-size: 0.9rem">看房预约</div>
+                </div>
+                <div
+                  style="
+                    background-color: var(--card-bg);
+                    border-radius: 10px;
+                    padding: 15px;
+                    text-align: center;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                  "
+                >
+                  <i
+                    class="fas fa-ellipsis-h"
+                    style="
+                      font-size: 24px;
+                      color: var(--primary-color);
+                      margin-bottom: 10px;
+                    "
+                  ></i>
+                  <div style="font-size: 0.9rem">更多问题</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 联系客服 -->
+            <div
+              style="
+                margin-bottom: 25px;
+                background-color: var(--card-bg);
+                border-radius: 15px;
+                padding: 20px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+              "
+            >
+              <div
+                style="
+                  font-weight: bold;
+                  font-size: 1.1rem;
+                  margin-bottom: 15px;
+                "
+              >
+                联系客服
+              </div>
+              <div style="display: flex; gap: 15px; margin-bottom: 20px">
+                <div
+                  style="
+                    flex: 1;
+                    background-color: var(--secondary-color);
+                    border-radius: 10px;
+                    padding: 15px;
+                    text-align: center;
+                  "
+                >
+                  <i
+                    class="fas fa-comment-dots"
+                    style="
+                      font-size: 24px;
+                      color: var(--primary-color);
+                      margin-bottom: 10px;
+                    "
+                  ></i>
+                  <div style="font-size: 0.9rem">在线咨询</div>
+                </div>
+                <div
+                  style="
+                    flex: 1;
+                    background-color: var(--secondary-color);
+                    border-radius: 10px;
+                    padding: 15px;
+                    text-align: center;
+                  "
+                >
+                  <i
+                    class="fas fa-phone-alt"
+                    style="
+                      font-size: 24px;
+                      color: var(--primary-color);
+                      margin-bottom: 10px;
+                    "
+                  ></i>
+                  <div style="font-size: 0.9rem">电话客服</div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-top: 5px;
+                "
+              >
+                <div style="text-align: center; font-size: 0.9rem; color: #666">
+                  <div>客服工作时间: 09:00-20:00</div>
+                  <div style="margin-top: 5px">客服热线: 400-888-8888</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 我的问题反馈 -->
+            <div style="margin-bottom: 25px">
+              <div
+                style="
+                  font-weight: bold;
+                  font-size: 1.1rem;
+                  margin-bottom: 15px;
+                "
+              >
+                我的问题反馈
+              </div>
+              <div
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 10px;
+                  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                "
+              >
+                <!-- 问题记录项 -->
+                <div
+                  style="
+                    padding: 15px;
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid var(--border-color);
+                  "
+                >
+                  <div>
+                    <div style="font-weight: 500; margin-bottom: 5px">
+                      租金计算问题
+                    </div>
+                    <div style="font-size: 0.8rem; color: #999">
+                      提交时间: 2023-05-18
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <div
+                      style="
+                        background-color: #e6f7ff;
+                        color: #1890ff;
+                        padding: 2px 8px;
+                        border-radius: 10px;
+                        font-size: 0.8rem;
+                      "
+                    >
+                      已回复
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: #999"></i>
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    padding: 15px;
+                    display: flex;
+                    justify-content: space-between;
+                  "
+                >
+                  <div>
+                    <div style="font-weight: 500; margin-bottom: 5px">
+                      合同解约流程咨询
+                    </div>
+                    <div style="font-size: 0.8rem; color: #999">
+                      提交时间: 2023-04-25
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 10px">
+                    <div
+                      style="
+                        background-color: #f6ffed;
+                        color: #52c41a;
+                        padding: 2px 8px;
+                        border-radius: 10px;
+                        font-size: 0.8rem;
+                      "
+                    >
+                      已解决
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: #999"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 提交新问题按钮 -->
+            <button
+              style="
+                width: 100%;
+                padding: 15px;
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-weight: bold;
+                margin-top: 10px;
+              "
+            >
+              <i class="fas fa-plus-circle" style="margin-right: 8px"></i>
+              提交新问题
+            </button>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item">
+              <i class="fas fa-home"></i>
+              <span>首页</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-search"></i>
+              <span>搜索</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-heart"></i>
+              <span>收藏</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-comment"></i>
+              <span>消息</span>
+            </div>
+            <div class="nav-item active">
+              <i class="fas fa-user"></i>
+              <span>我的</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 订单中心页面 -->
+      <div class="screen">
+        <div class="screen-title">订单中心</div>
+        <div class="screen-content">
+          <div class="app-header">
+            <div style="display: flex; align-items: center">
+              <i class="fas fa-arrow-left" style="margin-right: 15px"></i>
+              <div>订单中心</div>
+            </div>
+            <div><i class="fas fa-filter"></i></div>
+          </div>
+
+          <div style="padding: 0 0 15px 0; background-color: var(--bg-color)">
+            <!-- 状态筛选标签 -->
+            <div
+              style="
+                display: flex;
+                gap: 10px;
+                padding: 15px;
+                overflow-x: auto;
+                white-space: nowrap;
+              "
+            >
+              <div
+                style="
+                  background-color: var(--primary-color);
+                  color: white;
+                  padding: 8px 16px;
+                  border-radius: 20px;
+                  font-size: 0.9rem;
+                "
+              >
+                全部
+              </div>
+              <div
+                style="
+                  background-color: var(--bg-color);
+                  color: var(--text-color);
+                  border: 1px solid var(--border-color);
+                  padding: 8px 16px;
+                  border-radius: 20px;
+                  font-size: 0.9rem;
+                "
+              >
+                待支付
+              </div>
+              <div
+                style="
+                  background-color: var(--bg-color);
+                  color: var(--text-color);
+                  border: 1px solid var(--border-color);
+                  padding: 8px 16px;
+                  border-radius: 20px;
+                  font-size: 0.9rem;
+                "
+              >
+                已支付
+              </div>
+              <div
+                style="
+                  background-color: var(--bg-color);
+                  color: var(--text-color);
+                  border: 1px solid var(--border-color);
+                  padding: 8px 16px;
+                  border-radius: 20px;
+                  font-size: 0.9rem;
+                "
+              >
+                已取消
+              </div>
+              <div
+                style="
+                  background-color: var(--bg-color);
+                  color: var(--text-color);
+                  border: 1px solid var(--border-color);
+                  padding: 8px 16px;
+                  border-radius: 20px;
+                  font-size: 0.9rem;
+                "
+              >
+                已退款
+              </div>
+            </div>
+
+            <!-- 订单列表 -->
+            <div style="padding: 0 15px">
+              <!-- 订单项1 - 待支付 -->
+              <div
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 12px;
+                  margin-bottom: 15px;
+                  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                "
+              >
+                <div
+                  style="
+                    padding: 15px;
+                    border-bottom: 1px solid var(--border-color);
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <div style="font-weight: bold">2023年6月房租</div>
+                    <div style="color: #ff9800; font-weight: 500">待支付</div>
+                  </div>
+                  <div style="display: flex; gap: 10px; align-items: center">
+                    <div
+                      style="
+                        width: 60px;
+                        height: 60px;
+                        background-color: #ddd;
+                        border-radius: 8px;
+                      "
+                    ></div>
+                    <div style="flex: 1">
+                      <div style="font-weight: 500; margin-bottom: 5px">
+                        朝阳区 - 望京 精装修一居室
+                      </div>
+                      <div style="font-size: 0.8rem; color: #666">
+                        订单编号: RO2023061501
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    padding: 15px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <span style="font-size: 0.9rem">支付金额: </span>
+                    <span style="font-weight: bold; color: #ff5722"
+                      >¥4,500.00</span
+                    >
+                  </div>
+                  <div style="display: flex; gap: 10px">
+                    <button
+                      style="
+                        padding: 8px 12px;
+                        background-color: var(--bg-color);
+                        border: 1px solid var(--border-color);
+                        border-radius: 20px;
+                        font-size: 0.9rem;
+                      "
+                    >
+                      取消订单
+                    </button>
+                    <button
+                      style="
+                        padding: 8px 16px;
+                        background-color: var(--primary-color);
+                        color: white;
+                        border: none;
+                        border-radius: 20px;
+                        font-size: 0.9rem;
+                        font-weight: 500;
+                      "
+                    >
+                      立即支付
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 订单项2 - 已支付 -->
+              <div
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 12px;
+                  margin-bottom: 15px;
+                  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                "
+              >
+                <div
+                  style="
+                    padding: 15px;
+                    border-bottom: 1px solid var(--border-color);
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <div style="font-weight: bold">2023年5月房租</div>
+                    <div style="color: #4caf50; font-weight: 500">已支付</div>
+                  </div>
+                  <div style="display: flex; gap: 10px; align-items: center">
+                    <div
+                      style="
+                        width: 60px;
+                        height: 60px;
+                        background-color: #ddd;
+                        border-radius: 8px;
+                      "
+                    ></div>
+                    <div style="flex: 1">
+                      <div style="font-weight: 500; margin-bottom: 5px">
+                        朝阳区 - 望京 精装修一居室
+                      </div>
+                      <div style="font-size: 0.8rem; color: #666">
+                        订单编号: RO2023051501
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    padding: 15px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <span style="font-size: 0.9rem">支付金额: </span>
+                    <span style="font-weight: bold">¥4,500.00</span>
+                  </div>
+                  <div>
+                    <button
+                      style="
+                        padding: 8px 12px;
+                        background-color: var(--bg-color);
+                        border: 1px solid var(--border-color);
+                        border-radius: 20px;
+                        font-size: 0.9rem;
+                      "
+                    >
+                      查看详情
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 订单项3 - 已取消 -->
+              <div
+                style="
+                  background-color: var(--card-bg);
+                  border-radius: 12px;
+                  margin-bottom: 15px;
+                  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                "
+              >
+                <div
+                  style="
+                    padding: 15px;
+                    border-bottom: 1px solid var(--border-color);
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <div style="font-weight: bold">看房服务费</div>
+                    <div style="color: #9e9e9e; font-weight: 500">已取消</div>
+                  </div>
+                  <div style="display: flex; gap: 10px; align-items: center">
+                    <div
+                      style="
+                        width: 60px;
+                        height: 60px;
+                        background-color: #ddd;
+                        border-radius: 8px;
+                      "
+                    ></div>
+                    <div style="flex: 1">
+                      <div style="font-weight: 500; margin-bottom: 5px">
+                        海淀区 - 中关村 两居室
+                      </div>
+                      <div style="font-size: 0.8rem; color: #666">
+                        订单编号: RO2023040201
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style="
+                    padding: 15px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  "
+                >
+                  <div>
+                    <span style="font-size: 0.9rem">支付金额: </span>
+                    <span style="font-weight: bold">¥100.00</span>
+                  </div>
+                  <div>
+                    <button
+                      style="
+                        padding: 8px 12px;
+                        background-color: var(--bg-color);
+                        border: 1px solid var(--border-color);
+                        border-radius: 20px;
+                        font-size: 0.9rem;
+                      "
+                    >
+                      删除订单
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-nav">
+            <div class="nav-item">
+              <i class="fas fa-home"></i>
+              <span>首页</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-search"></i>
+              <span>搜索</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-heart"></i>
+              <span>收藏</span>
+            </div>
+            <div class="nav-item">
+              <i class="fas fa-comment"></i>
+              <span>消息</span>
+            </div>
+            <div class="nav-item active">
+              <i class="fas fa-user"></i>
+              <span>我的</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 身份认证页面 -->
+      <div class="screen">
+        <div class="screen-title">身份认证</div>
+        <div class="screen-content">
+          <div class="app-header">
+            <div style="display: flex; align-items: center">
+              <i class="fas fa-arrow-left" style="margin-right: 15px"></i>
+              <div>身份认证</div>
+            </div>
+            <div></div>
+          </div>
+
+          <div style="padding: 20px 15px; background-color: var(--bg-color)">
+            <!-- 认证状态卡片 -->
+            <div
+              style="
+                background-color: var(--primary-color);
+                color: white;
+                border-radius: 12px;
+                padding: 20px;
+                margin-bottom: 25px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              "
+            >
+              <div
+                style="display: flex; align-items: center; margin-bottom: 15px"
+              >
+                <i
+                  class="fas fa-id-card"
+                  style="font-size: 24px; margin-right: 15px"
+                ></i>
+                <div style="font-size: 1.1rem; font-weight: bold">
+                  未完成身份认证
+                </div>
+              </div>
+              <div style="font-size: 0.9rem; line-height: 1.5; opacity: 0.9">
+                完成实名认证后，可享受平台保障服务，提高租房申请通过率
+              </div>
+            </div>
+
+            <!-- 认证步骤 -->
+            <div style="margin-bottom: 25px">
+              <div
+                style="
+                  font-weight: bold;
+                  font-size: 1.1rem;
+                  margin-bottom: 15px;
+                "
+              >
+                认证步骤
+              </div>
+
+              <div
+                style="display: flex; margin-bottom: 25px; position: relative"
+              >
+                <!-- 步骤连接线 -->
+                <div
+                  style="
+                    position: absolute;
+                    left: 20px;
+                    top: 35px;
+                    height: calc(100% - 20px);
+                    width: 2px;
+                    background-color: #e0e0e0;
+                    z-index: 1;
+                  "
+                ></div>
+
+                <!-- 步骤1 - 上传证件 -->
+                <div
+                  style="
+                    display: flex;
+                    z-index: 2;
+                    margin-bottom: 30px;
+                    width: 100%;
+                  "
+                >
+                  <div
+                    style="
+                      width: 40px;
+                      height: 40px;
+                      border-radius: 50%;
+                      background-color: var(--primary-color);
+                      color: white;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      margin-right: 15px;
+                    "
+                  >
+                    1
+                  </div>
+                  <div
+                    style="
+                      flex: 1;
+                      background-color: var(--card-bg);
+                      border-radius: 10px;
+                      padding: 15px;
+                      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                    "
+                  >
+                    <div style="font-weight: bold; margin-bottom: 10px">
+                      上传身份证件
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px">
+                      <div
+                        style="
+                          flex: 1;
+                          height: 80px;
+                          background-color: var(--bg-color);
+                          border: 1px dashed var(--border-color);
+                          border-radius: 8px;
+                          display: flex;
+                          flex-direction: column;
+                          justify-content: center;
+                          align-items: center;
+                        "
+                      >
+                        <i
+                          class="fas fa-id-card"
+                          style="
+                            font-size: 20px;
+                            color: #999;
+                            margin-bottom: 8px;
+                          "
+                        ></i>
+                        <div style="font-size: 0.8rem; color: #999">
+                          上传人像面
+                        </div>
+                      </div>
+                      <div
+                        style="
+                          flex: 1;
+                          height: 80px;
+                          background-color: var(--bg-color);
+                          border: 1px dashed var(--border-color);
+                          border-radius: 8px;
+                          display: flex;
+                          flex-direction: column;
+                          justify-content: center;
+                          align-items: center;
+                        "
+                      >
+                        <i
+                          class="fas fa-id-card"
+                          style="
+                            font-size: 20px;
+                            color: #999;
+                            margin-bottom: 8px;
+                          "
+                        ></i>
+                        <div style="font-size: 0.8rem; color: #999">
+                          上传国徽面
+                        </div>
+                      </div>
+                    </div>
+                    <div style="font-size: 0.8rem; color: #666">
+                      请上传清晰的身份证正反面照片
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  z-index: 2;
+                  margin-bottom: 30px;
+                  width: 100%;
+                "
+              >
+                <div
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: #e0e0e0;
+                    color: #666;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 15px;
+                  "
+                >
+                  2
+                </div>
+                <div
+                  style="
+                    flex: 1;
+                    background-color: var(--card-bg);
+                    border-radius: 10px;
+                    padding: 15px;
+                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                  "
+                >
+                  <div style="font-weight: bold; margin-bottom: 10px">
+                    人脸验证
+                  </div>
+                  <div
+                    style="
+                      height: 100px;
+                      background-color: var(--bg-color);
+                      border: 1px dashed var(--border-color);
+                      border-radius: 8px;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      align-items: center;
+                      margin-bottom: 15px;
+                    "
+                  >
+                    <i
+                      class="fas fa-camera"
+                      style="font-size: 24px; color: #999; margin-bottom: 8px"
+                    ></i>
+                    <div style="font-size: 0.9rem; color: #999">
+                      点击开始人脸验证
+                    </div>
+                  </div>
+                  <div style="font-size: 0.8rem; color: #666">
+                    请确保光线充足，正对摄像头完成验证
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex; width: 100%">
+                <div
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: #e0e0e0;
+                    color: #666;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 15px;
+                  "
+                >
+                  3
+                </div>
+                <div
+                  style="
+                    flex: 1;
+                    background-color: var(--card-bg);
+                    border-radius: 10px;
+                    padding: 15px;
+                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                  "
+                >
+                  <div style="font-weight: bold; margin-bottom: 10px">
+                    填写个人信息
+                  </div>
+                  <div style="margin-bottom: 10px">
+                    <div style="font-size: 0.9rem; margin-bottom: 5px">
+                      姓名
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="请输入您的真实姓名"
+                      style="
+                        width: 100%;
+                        padding: 10px;
+                        border-radius: 8px;
+                        border: 1px solid var(--border-color);
+                        background-color: var(--bg-color);
+                      "
+                    />
+                  </div>
+                  <div>
+                    <div style="font-size: 0.9rem; margin-bottom: 5px">
+                      身份证号
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="请输入18位身份证号码"
+                      style="
+                        width: 100%;
+                        padding: 10px;
+                        border-radius: 8px;
+                        border: 1px solid var(--border-color);
+                        background-color: var(--bg-color);
+                      "
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 隐私协议 -->
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                font-size: 0.9rem;
+              "
+            >
+              <input
+                type="checkbox"
+                id="privacy-agreement"
+                style="margin-right: 8px"
+              />
+              <label for="privacy-agreement"
+                >我已阅读并同意<span style="color: var(--primary-color)"
+                  >《隐私协议》</span
+                >和<span style="color: var(--primary-color)"
+                  >《实名认证服务条款》</span
+                ></label
+              >
+            </div>
+
+            <!-- 提交按钮 -->
+            <button
+              style="
+                width: 100%;
+                padding: 15px;
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-weight: bold;
+                margin-top: 10px;
+              "
+            >
+              提交认证
+            </button>
+
+            <!-- 注意事项 -->
+            <div
+              style="
+                margin-top: 20px;
+                background-color: var(--secondary-color);
+                border-radius: 10px;
+                padding: 15px;
+              "
+            >
+              <div
+                style="
+                  font-weight: bold;
+                  margin-bottom: 10px;
+                  font-size: 0.9rem;
+                "
+              >
+                注意事项：
+              </div>
+              <ul
+                style="
+                  font-size: 0.8rem;
+                  color: #666;
+                  padding-left: 20px;
+                  margin: 0;
+                "
+              >
+                <li style="margin-bottom: 5px">
+                  请确保上传的证件真实有效，信息清晰可见
+                </li>
+                <li style="margin-bottom: 5px">
+                  您的身份信息将被严格保密，仅用于身份验证
+                </li>
+                <li style="margin-bottom: 5px">
+                  认证通过后将获得更多租房特权和优先看房机会
+                </li>
+                <li>若有疑问，请联系客服400-888-8888</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script>
@@ -2503,6 +3832,9 @@
         myContracts: "我的合同",
         paymentAndContract: "支付与合同",
         repairServices: "报修服务",
+        // 设置页面
+        settingsTitle: "设置",
+        personalInfo: "个人信息",
       },
       en: {
         appTitle: "Rental App Prototype",

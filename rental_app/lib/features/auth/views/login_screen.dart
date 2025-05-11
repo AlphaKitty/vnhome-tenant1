@@ -13,8 +13,8 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _usernameController = TextEditingController(text: 'test');
+  final _passwordController = TextEditingController(text: 'test');
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
 
@@ -74,6 +74,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       labelText: '用户名',
                       hintText: '请输入用户名/手机号',
                       prefixIcon: Icon(Icons.person),
+                      helperText: '测试账号: test',
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -93,6 +94,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       labelText: '密码',
                       hintText: '请输入密码',
                       prefixIcon: const Icon(Icons.lock),
+                      helperText: '测试密码: test',
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscurePassword

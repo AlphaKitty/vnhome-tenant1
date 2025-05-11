@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rental_app/features/favorite/views/favorite_tab_screen.dart';
+import 'package:rental_app/features/message/views/message_tab_screen.dart';
+import 'package:rental_app/features/profile/views/profile_tab_screen.dart';
+import 'package:rental_app/features/search/views/search_tab_screen.dart';
 import 'package:rental_app/shared/widgets/bottom_nav_bar_widget.dart';
 import '../viewmodels/bottom_nav_provider.dart';
 import 'home_tab_screen.dart';
@@ -18,13 +22,13 @@ class HomeScreen extends ConsumerWidget {
         case 0:
           return const HomeTabScreen();
         case 1:
-          return const _PlaceholderScreen(title: '搜索');
+          return const SearchTabScreen();
         case 2:
-          return const _PlaceholderScreen(title: '收藏');
+          return const FavoriteTabScreen();
         case 3:
-          return const _PlaceholderScreen(title: '消息');
+          return const MessageTabScreen();
         case 4:
-          return const _PlaceholderScreen(title: '我的');
+          return const ProfileTabScreen();
         default:
           return const HomeTabScreen();
       }

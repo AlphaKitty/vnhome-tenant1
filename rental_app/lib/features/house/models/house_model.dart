@@ -12,7 +12,6 @@ class HouseModel {
   final String direction;
   final List<String> imageUrls;
   final List<String> tags;
-  final bool isFavorite;
 
   HouseModel({
     required this.id,
@@ -27,7 +26,6 @@ class HouseModel {
     required this.direction,
     this.imageUrls = const [],
     this.tags = const [],
-    this.isFavorite = false,
   });
 
   /// 从JSON映射创建房源模型
@@ -51,7 +49,6 @@ class HouseModel {
       tags:
           (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
           [],
-      isFavorite: json['isFavorite'] as bool? ?? false,
     );
   }
 
@@ -70,7 +67,6 @@ class HouseModel {
       'direction': direction,
       'imageUrls': imageUrls,
       'tags': tags,
-      'isFavorite': isFavorite,
     };
   }
 
@@ -88,7 +84,6 @@ class HouseModel {
     String? direction,
     List<String>? imageUrls,
     List<String>? tags,
-    bool? isFavorite,
   }) {
     return HouseModel(
       id: id ?? this.id,
@@ -103,12 +98,6 @@ class HouseModel {
       direction: direction ?? this.direction,
       imageUrls: imageUrls ?? this.imageUrls,
       tags: tags ?? this.tags,
-      isFavorite: isFavorite ?? this.isFavorite,
     );
-  }
-
-  /// 切换收藏状态
-  HouseModel toggleFavorite() {
-    return copyWith(isFavorite: !isFavorite);
   }
 }

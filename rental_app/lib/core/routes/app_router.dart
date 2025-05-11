@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rental_app/features/settings/views/profile_edit_screen.dart';
+import 'package:rental_app/features/settings/views/settings_screen.dart';
 
 /// 应用路由管理
 class AppRouter {
@@ -13,14 +15,38 @@ class AppRouter {
   static const String chat = '/chat';
   static const String profile = '/profile';
   static const String payment = '/payment';
+  static const String paymentDetail = '/payment-detail';
   static const String contract = '/contract';
+  static const String contractDetail = '/contract-detail';
   static const String repair = '/repair';
+
+  // 设置相关路由
+  static const String settings = '/settings';
+  static const String profileEdit = '/settings/profile-edit';
+  static const String passwordChange = '/settings/password-change';
+  static const String phoneChange = '/settings/phone-change';
+  static const String paymentSecurity = '/settings/payment-security';
+  static const String privacySettings = '/settings/privacy';
+  static const String aboutUs = '/settings/about';
+  static const String helpCenter = '/settings/help';
+  static const String userAgreement = '/settings/agreement';
+
+  // 客服中心相关路由
+  static const String customerService = '/customer-service';
+  static const String contactSupport = '/customer-service/contact';
+  static const String faq = '/customer-service/faq';
+  static const String feedback = '/customer-service/feedback';
 
   /// 获取所有路由配置
   static Map<String, WidgetBuilder> getRoutes() {
     return {
       // 具体路由实现将在创建视图后添加
       // splash: (context) => const SplashScreen(),
+
+      // 设置相关路由
+      settings: (context) => const SettingsScreen(),
+      profileEdit: (context) => const ProfileEditScreen(),
+      // 其他设置子页面路由将在实现后添加
     };
   }
 

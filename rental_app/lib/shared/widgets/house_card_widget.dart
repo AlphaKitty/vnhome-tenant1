@@ -11,6 +11,7 @@ class HouseCardWidget extends StatelessWidget {
   final double area;
   final String floor;
   final VoidCallback onTap;
+  final List<Widget>? actions;
 
   const HouseCardWidget({
     super.key,
@@ -22,6 +23,7 @@ class HouseCardWidget extends StatelessWidget {
     required this.area,
     required this.floor,
     required this.onTap,
+    this.actions,
   });
 
   @override
@@ -37,128 +39,152 @@ class HouseCardWidget extends StatelessWidget {
         horizontal: DesignTokens.spacingMedium,
         vertical: DesignTokens.spacingSmall,
       ),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(DesignTokens.radiusMedium),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // 房源图片
-            Stack(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // 卡片主体内容 - 包装在InkWell中以响应点击
+          InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(DesignTokens.radiusMedium),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: DesignTokens.circularRadiusMedium,
-                    topRight: DesignTokens.circularRadiusMedium,
-                  ),
-                  child:
-                      imageUrl != null && imageUrl!.isNotEmpty
-                          ? Image.network(
-                            imageUrl!,
-                            height: 150,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                            errorBuilder:
-                                (context, error, stackTrace) => Container(
-                                  height: 150,
-                                  color: Colors.grey.shade300,
-                                  alignment: Alignment.center,
-                                  child: const Icon(
-                                    Icons.image_not_supported,
-                                    size: 40,
-                                  ),
-                                ),
-                          )
-                          : Container(
-                            height: 150,
-                            color: Colors.grey.shade300,
-                            alignment: Alignment.center,
-                            child: const Icon(Icons.home, size: 40),
+                // 房源图片
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topLeft: DesignTokens.circularRadiusMedium,
+                        topRight: DesignTokens.circularRadiusMedium,
+                      ),
+                      child:
+                          imageUrl != null && imageUrl!.isNotEmpty
+                              ? Image.network(
+                                imageUrl!,
+                                height: 150,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                                errorBuilder:
+                                    (context, error, stackTrace) => Container(
+                                      height: 150,
+                                      color: Colors.grey.shade300,
+                                      alignment: Alignment.center,
+                                      child: const Icon(
+                                        Icons.image_not_supported,
+                                        size: 40,
+                                      ),
+                                    ),
+                              )
+                              : Container(
+                                height: 150,
+                                color: Colors.grey.shade300,
+                                alignment: Alignment.center,
+                                child: const Icon(Icons.home, size: 40),
+                              ),
+                    ),
+                    // 价格标签
+                    Positioned(
+                      right: DesignTokens.spacingSmall,
+                      bottom: DesignTokens.spacingSmall,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: DesignTokens.spacingSmall,
+                          vertical: DesignTokens.spacingXSmall,
+                        ),
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.primary,
+                          borderRadius: BorderRadius.circular(
+                            DesignTokens.radiusSmall,
                           ),
+                        ),
+                        child: Text(
+                          '¥${price.toStringAsFixed(0)}/月',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: DesignTokens.fontSizeSmall,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                // 价格标签
-                Positioned(
-                  right: DesignTokens.spacingSmall,
-                  bottom: DesignTokens.spacingSmall,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: DesignTokens.spacingSmall,
-                      vertical: DesignTokens.spacingXSmall,
-                    ),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.primary,
-                      borderRadius: BorderRadius.circular(
-                        DesignTokens.radiusSmall,
+                // 房源信息
+                Padding(
+                  padding: EdgeInsets.all(DesignTokens.spacingMedium),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // 标题
+                      Text(
+                        title,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    child: Text(
-                      '¥${price.toStringAsFixed(0)}/月',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: DesignTokens.fontSizeSmall,
+                      SizedBox(height: DesignTokens.spacingXSmall),
+                      // 位置
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            size: 16,
+                            color: Colors.grey[600],
+                          ),
+                          SizedBox(width: DesignTokens.spacingXXSmall),
+                          Expanded(
+                            child: Text(
+                              location,
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                color: Colors.grey[600],
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                      SizedBox(height: DesignTokens.spacingSmall),
+                      // 特征
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _buildFeature(context, Icons.bed, roomType),
+                          _buildFeature(
+                            context,
+                            Icons.straighten,
+                            '${area.toStringAsFixed(0)}m²',
+                          ),
+                          _buildFeature(context, Icons.apartment, floor),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-            // 房源信息
+          ),
+
+          // 如果有操作按钮，则显示操作栏
+          if (actions != null && actions!.isNotEmpty)
             Padding(
-              padding: EdgeInsets.all(DesignTokens.spacingMedium),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              padding: EdgeInsets.only(
+                left: DesignTokens.spacingMedium,
+                right: DesignTokens.spacingMedium,
+                bottom: DesignTokens.spacingMedium,
+              ),
+              child: Row(
                 children: [
-                  // 标题
-                  Text(
-                    title,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: DesignTokens.spacingXSmall),
-                  // 位置
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.location_on,
-                        size: 16,
-                        color: Colors.grey[600],
-                      ),
-                      SizedBox(width: DesignTokens.spacingXXSmall),
-                      Expanded(
-                        child: Text(
-                          location,
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: Colors.grey[600],
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: DesignTokens.spacingSmall),
-                  // 特征
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildFeature(context, Icons.bed, roomType),
-                      _buildFeature(
-                        context,
-                        Icons.straighten,
-                        '${area.toStringAsFixed(0)}m²',
-                      ),
-                      _buildFeature(context, Icons.apartment, floor),
-                    ],
-                  ),
+                  for (int i = 0; i < actions!.length; i++) ...[
+                    if (i > 0) SizedBox(width: DesignTokens.spacingSmall),
+                    actions![i],
+                  ],
                 ],
               ),
             ),
-          ],
-        ),
+        ],
       ),
     );
   }

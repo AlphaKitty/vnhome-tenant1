@@ -1,18 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rental_app/core/design_tokens.dart';
+import 'package:rental_app/features/favorite/viewmodels/favorite_provider.dart';
 import 'package:rental_app/shared/widgets/app_bar_widget.dart';
 import '../viewmodels/house_provider.dart';
 
 /// 房源详情页面
-class HouseDetailScreen extends ConsumerWidget {
+class HouseDetailScreen extends ConsumerStatefulWidget {
   final String houseId;
 
   const HouseDetailScreen({super.key, required this.houseId});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final house = ref.watch(houseDetailProvider(houseId));
+  ConsumerState<HouseDetailScreen> createState() => _HouseDetailScreenState();
+}
+
+class _HouseDetailScreenState extends ConsumerState<HouseDetailScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // 在查看房源详情时添加浏览记录
+    Future.microtask(() {
+      final house = ref.read(houseDetailProvider(widget.houseId));
+      if (house != null) {
+        ref.read(favoriteProvider.notifier).addHistory(house);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final house = ref.watch(houseDetailProvider(widget.houseId));
+    // 获取收藏状态
+    final isFavorite = ref
+        .watch(favoriteProvider)
+        .favoriteRecords
+        .any((record) => record.houseId == widget.houseId);
 
     if (house == null) {
       return Scaffold(
@@ -67,13 +90,23 @@ class HouseDetailScreen extends ConsumerWidget {
                   backgroundColor: Colors.black.withOpacity(0.3),
                   child: IconButton(
                     icon: Icon(
-                      house.isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: house.isFavorite ? Colors.red : Colors.white,
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? Colors.red : Colors.white,
                     ),
                     onPressed: () {
-                      ref
-                          .read(houseListProvider.notifier)
-                          .toggleFavorite(house.id);
+                      if (isFavorite) {
+                        // 找到收藏记录并移除
+                        final record = ref
+                            .read(favoriteProvider)
+                            .favoriteRecords
+                            .firstWhere((r) => r.houseId == house.id);
+                        ref
+                            .read(favoriteProvider.notifier)
+                            .removeFavorite(record.id);
+                      } else {
+                        // 添加到收藏
+                        ref.read(favoriteProvider.notifier).addFavorite(house);
+                      }
                     },
                   ),
                 ),

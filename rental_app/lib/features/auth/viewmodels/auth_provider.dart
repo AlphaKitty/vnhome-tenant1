@@ -68,13 +68,13 @@ class AuthNotifier extends StateNotifier<AuthState> {
     try {
       // 在实际应用中，这里会调用API进行身份验证
       // 现在为了演示，使用模拟数据
-      await Future.delayed(const Duration(seconds: 2)); // 模拟网络请求
+      await Future.delayed(const Duration(seconds: 1)); // 模拟网络请求
 
-      if (username == '1' && password == '1') {
+      if (username == 'test' && password == 'test') {
         // 登录成功
         final user = UserModel(
           id: '1',
-          username: username,
+          username: '张三',
           phoneNumber: '138****6789',
           avatar: null,
         );
